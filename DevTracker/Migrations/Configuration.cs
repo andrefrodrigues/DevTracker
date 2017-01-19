@@ -14,7 +14,11 @@ namespace DevTracker.Migrations
 
         protected override void Seed(DevTracker.Models.ApplicationDbContext context)
         {
-
+            var csharp = new Models.Language { name = "C#" };
+            var oop = new Models.Paradigm { name = "Object Oriented" };
+            context.Languages.AddOrUpdate(csharp,new Models.Language {name="Javascript" });
+            context.Paradigms.AddOrUpdate(oop, new Models.Paradigm {name="Functional" });
+            context.Lang_Paradigms.AddOrUpdate(new Models.Lang_Paradigm { LANG = csharp, PARAD = oop });
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
