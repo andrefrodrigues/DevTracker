@@ -79,6 +79,11 @@ namespace DevTracker.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name ="User Name")]
+        [StringLength(10,ErrorMessage ="The {0} must be at most {1} characters and at least {2} characters long",MinimumLength =4)]
+        public string UserName { get; set; }
     }
 
     public class ResetPasswordViewModel
