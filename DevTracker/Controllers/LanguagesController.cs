@@ -17,6 +17,7 @@ namespace DevTracker.Controllers
         // GET: Languages
         public ActionResult Index()
         {
+            ViewBag.Title = "Programming Languages";
             return View(db.Languages.ToList());
         }
 
