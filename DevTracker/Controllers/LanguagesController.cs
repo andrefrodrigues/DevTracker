@@ -22,11 +22,10 @@ namespace DevTracker.Controllers
             return View(db.Languages.ToList());
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult MyLanguages()
         {
-            DefaultAuthenticationTypes.ApplicationCookie;
+            return View("Index",db.Users.Find(User.Identity.GetUserId()).Languages);
         }
 
         // GET: Languages/Details/5

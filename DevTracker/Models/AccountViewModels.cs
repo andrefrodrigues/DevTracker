@@ -82,7 +82,7 @@ namespace DevTracker.Models
 
         [Required]
         [Display(Name ="User Name")]
-        [StringLength(10,ErrorMessage ="The {0} must be at most {1} characters and at least {2} characters long",MinimumLength =4)]
+        [StringLength(16,ErrorMessage ="The {0} must be at most {1} characters and at least {2} characters long",MinimumLength =4)]
         public string UserName { get; set; }
     }
 
