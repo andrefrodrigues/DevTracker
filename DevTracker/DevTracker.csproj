@@ -202,13 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701191819452_newEntities.cs" />
-    <Compile Include="Migrations\201701191819452_newEntities.Designer.cs">
-      <DependentUpon>201701191819452_newEntities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701191927560_adminRights.cs" />
-    <Compile Include="Migrations\201701191927560_adminRights.Designer.cs">
-      <DependentUpon>201701191927560_adminRights.cs</DependentUpon>
+    <Compile Include="Migrations\201701271035315_praying.cs" />
+    <Compile Include="Migrations\201701271035315_praying.Designer.cs">
+      <DependentUpon>201701271035315_praying.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -301,11 +297,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701191819452_newEntities.resx">
-      <DependentUpon>201701191819452_newEntities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701191927560_adminRights.resx">
-      <DependentUpon>201701191927560_adminRights.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701271035315_praying.resx">
+      <DependentUpon>201701271035315_praying.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

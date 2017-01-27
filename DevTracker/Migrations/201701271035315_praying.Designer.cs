@@ -7,13 +7,13 @@ namespace DevTracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class adminRights : IMigrationMetadata
+    public sealed partial class praying : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(adminRights));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(praying));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701191927560_adminRights"; }
+            get { return "201701271035315_praying"; }
         }
         
         string IMigrationMetadata.Source

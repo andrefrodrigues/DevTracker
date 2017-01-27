@@ -8,6 +8,7 @@
 <table class="table">
     <tr>
         <th>Name</th>
+        <th>Paradigms</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -18,6 +19,12 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.name })
         -->
         @item.name
+        </td>
+        <td>
+            @foreach (var paradigm in item.Paradigms)
+            {
+                <span>@paradigm.name</span>
+            }
         </td>
     </tr>
 }

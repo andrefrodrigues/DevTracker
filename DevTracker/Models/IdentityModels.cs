@@ -5,13 +5,16 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace DevTracker.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-
+        public ApplicationUser() :base() {
+            this.Languages = new HashSet<Language>();
+        }
         public bool admin { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -20,47 +23,35 @@ namespace DevTracker.Models
             // Add custom user claims here
             return userIdentity;
         }
-    }
 
-    public class User_Lang
-    {
-        [ForeignKey("userID")]
-        public virtual ApplicationUser user { get; set; }
-        [ForeignKey("langName")]
-        public virtual Language lang { get; set; }
-
-        [Key,Column(Order =0)]
-        public virtual string userID { get; set; }
-        [Key,Column(Order =1)]
-        public virtual string langName { get; set; }
+        public virtual ICollection<Language> Languages { get; set; }
     }
 
     public class Language
     {
+        public Language()
+        {
+            this.Paradigms = new HashSet<Paradigm>();
+            this.Users = new HashSet<ApplicationUser>();
+        }
         [Key]
         public string name { get; set; }
+        
+        public virtual ICollection<Paradigm> Paradigms { get; set; }
 
-    }
-
-    public class Lang_Paradigm
-    {
-        [ForeignKey("langName")]
-        public virtual Language LANG { get; set; }
-
-        [ForeignKey("paradID")]
-        public virtual Paradigm PARAD { get; set; }
-
-        [Key,Column(Order =0)]
-        public virtual string langName { get; set; }
-        [Key,Column(Order =1)]
-        public virtual int paradID { get; set; }
+        public virtual ICollection<ApplicationUser> Users { get; set; }
     }
 
     public class Paradigm
     {
+        public Paradigm()
+        {
+            this.Languages = new HashSet<Language>();
+        }
         [Key]
-        public int paradigm_id { get; set; }
+        public int paradigmId { get; set; }
         public string name { get; set; }
+        public virtual ICollection<Language> Languages { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -68,8 +59,6 @@ namespace DevTracker.Models
         //need to add here the tables to the context
         public DbSet<Language> Languages { get; set; }
         public DbSet<Paradigm> Paradigms { get; set; }
-        public DbSet<Lang_Paradigm> Lang_Paradigms { get; set; }
-        public DbSet<User_Lang> User_Langs { get; set; }
         public ApplicationDbContext()
             : base("DevTrackerLocal", throwIfV1Schema: false)
         {
