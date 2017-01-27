@@ -29,7 +29,16 @@
                     Menu <span class="caret"></span>
                 <ul class="dropdown-menu">
                     <li><a href="#">@Html.ActionLink("Programming Languages","Index","Languages")</a></li>
-                    <li><a href="#">My Programming Languages</a></li>
+                    <li><a href="#">
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.ActionLink("My Programming Languages","MyLanguages","Languages", routeValues: null, htmlAttributes: new { title = "Manage" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("My Programming Languages", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                        }
+                        </a></li>
                     <li><a href="#">Something else here soon</a></li>
                 </ul>
                 </a></li>

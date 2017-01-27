@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DevTracker.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DevTracker.Controllers
 {
@@ -19,6 +20,13 @@ namespace DevTracker.Controllers
         {
             ViewBag.Title = "Programming Languages";
             return View(db.Languages.ToList());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MyLanguages()
+        {
+            DefaultAuthenticationTypes.ApplicationCookie;
         }
 
         // GET: Languages/Details/5
